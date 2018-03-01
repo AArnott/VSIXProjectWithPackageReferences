@@ -26,14 +26,14 @@ namespace VSIXProject11
         /// <summary>
         /// VS Package that provides this command, not null.
         /// </summary>
-        private readonly AsyncPackage package;
+        private readonly Package package;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ToolWindow1Command"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
-        private ToolWindow1Command(AsyncPackage package)
+        private ToolWindow1Command(Package package)
         {
             this.package = package ?? throw new ArgumentNullException("package");
 
@@ -69,7 +69,7 @@ namespace VSIXProject11
         /// Initializes the singleton instance of the command.
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
-        public static void Initialize(AsyncPackage package)
+        public static void Initialize(Package package)
         {
             Instance = new ToolWindow1Command(package);
         }
