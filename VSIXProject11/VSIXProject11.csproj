@@ -67,17 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.SDK.Analyzers" Version="15.6.46-beta" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="15.6.27415" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.Interop.14.0.DesignTime">
-      <Version>14.3.25407</Version>
-    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="15.6.27413" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.Interop.14.0.DesignTime" Version="14.3.25407" />
     <PackageReference Include="Microsoft.VisualStudio.threading" Version="15.8.19-beta" />
-    <PackageReference Include="newtonsoft.json">
-      <Version>9.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="streamjsonrpc">
-      <Version>1.2.8</Version>
-    </PackageReference>
+    <PackageReference Include="newtonsoft.json" Version="9.0.1" />
+    <PackageReference Include="streamjsonrpc" Version="1.2.8" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="ToolWindow1Control.xaml">
