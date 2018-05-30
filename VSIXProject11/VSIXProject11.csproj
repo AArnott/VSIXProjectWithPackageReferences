@@ -1,11 +1,4 @@
-﻿<Project>
-  <!-- This project uses VS SDK targets so is organized in a weird way to workaround Microsoft.NET.Sdk/VS SDK interop issues -->
-  <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.props" />
-  <PropertyGroup>
-    <!-- workaround for https://github.com/NuGet/Home/issues/5894 -->
-    <OriginalProjectName>VSIXProject11</OriginalProjectName>
-    <RootMSBuildProjectExtensionsPath>$(RepoRoot)obj\$(BuildSubPath)$(OriginalProjectName)\</RootMSBuildProjectExtensionsPath>
-  </PropertyGroup>
+﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>
     <SignAssembly>true</SignAssembly>
@@ -23,22 +16,10 @@
     <StartArguments>/rootsuffix Exp</StartArguments>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.2.2" />
     <PackageReference Include="Microsoft.VisualStudio.SDK.Analyzers" Version="15.6.46-beta" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="15.6.27413" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.Interop.14.0.DesignTime" Version="14.3.25407" />
     <PackageReference Include="Microsoft.VisualStudio.threading" Version="15.8.19-beta" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="ToolWindow1Control.xaml.cs">
-      <DependentUpon>ToolWindow1Control.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="ToolWindow1Control.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\**" />
@@ -63,13 +44,5 @@
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
-  <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition=" Exists('$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets') " />
-  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
-  <Import Project="$(RootMSBuildProjectExtensionsPath)$(OriginalProjectName).*.targets" Condition=" '$(MSBuildProjectName)' != '$(OriginalProjectName)' and '$(ImportProjectExtensionProps)' == 'true' and exists('$(RootMSBuildProjectExtensionsPath)')" />
-  <Target Name="WorkaroundForXAMLIntellisenseBuildIssue" AfterTargets="_CheckCompileDesignTimePrerequisite">
-    <PropertyGroup>
-      <BuildingProject>false</BuildingProject>
-    </PropertyGroup>
-  </Target>
 </Project>
