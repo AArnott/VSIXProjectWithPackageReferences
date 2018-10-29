@@ -6,5 +6,6 @@
   </Localization>
   <Rules AnalyzerId="Microsoft.VisualStudio.Threading.Analyzers" RuleNamespace="Microsoft.VisualStudio.Threading.Analyzers">
     <Rule Id="VSTHRD111" Action="Hidden" />
+    <Rule Id="VSTHRD100" Action="Warning" />
   </Rules>
 </RuleSet>
