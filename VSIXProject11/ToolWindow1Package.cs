@@ -26,8 +26,8 @@ namespace VSIXProject11
         public const string PackageGuidString = "2897fc32-a5e5-4206-8d60-7a53709eea1f";
         protected override void Initialize()
         {
-            ToolWindow1Command.Initialize(this);
             base.Initialize();
+            ToolWindow1Command.Initialize(this);
         }
     }
 }
