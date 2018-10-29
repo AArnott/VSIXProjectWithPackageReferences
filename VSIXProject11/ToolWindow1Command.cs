@@ -94,6 +94,8 @@ namespace VSIXProject11
 
             IVsWindowFrame windowFrame = (IVsWindowFrame)window.Frame;
             Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(windowFrame.Show());
+
+            var myService = this.package.QueryService<MyService>() as MyService;
         }
     }
 }

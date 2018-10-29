@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -16,6 +17,7 @@ namespace VSIXProject11
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideToolWindow(typeof(ToolWindow1))]
     [Guid(ToolWindow1Package.PackageGuidString)]
+    [ProvideService(typeof(MyService))]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
     public sealed class ToolWindow1Package : Package
     {
@@ -24,6 +26,9 @@ namespace VSIXProject11
         {
             base.Initialize();
             ToolWindow1Command.Initialize(this);
+
+            IServiceContainer serviceContainer = this;
+            serviceContainer.AddService(typeof(MyService), new MyService());
         }
     }
 }
