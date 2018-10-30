@@ -70,5 +70,20 @@
             Thread.Sleep(100); // Simulate UI thread bound work
             await Task.Delay(10); // Simulate async yielding (e.g. I/O, or threadpool work)
         }
+
+        private async Task MakeProgressAsync(IProgress<ThreadedWaitDialogProgressData> progress, CancellationToken cancellationToken)
+        {
+            for (int i = 1; i <= 100; i++)
+            {
+                progress.Report(new ThreadedWaitDialogProgressData(
+                    waitMessage: "my wait message",
+                    progressText: i < 70 ? "my progress text" : "wrapping up",
+                    statusBarText: null,
+                    isCancelable: i < 70,
+                    currentStep: i,
+                    totalSteps: 100));
+                await Task.Delay(30, cancellationToken);
+            }
+        }
     }
 }
