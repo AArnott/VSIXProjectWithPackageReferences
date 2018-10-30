@@ -68,7 +68,8 @@
         private async Task DoSomethingAsync()
         {
             Thread.Sleep(100); // Simulate UI thread bound work
-            await Task.Delay(10); // Simulate async yielding (e.g. I/O, or threadpool work)
+            await Task.Yield();
+            //await Task.Delay(10); // Simulate async yielding (e.g. I/O, or threadpool work)
         }
 
         private async Task MakeProgressAsync(IProgress<ThreadedWaitDialogProgressData> progress, CancellationToken cancellationToken)
